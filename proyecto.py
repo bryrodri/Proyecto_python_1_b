@@ -1,20 +1,9 @@
+from modulos.archivos import *
+from modulos.imprimir import * 
 
 
-def imprimirPanes():
-    pantalla="""
-    Opciones:
-    Tamaños: Triple ( t ) Doble ( d ) Individual ( i ): """
-    print(pantalla)
 
-def imprimirLogo():
-    pantalla="""
-    **************************
-    *    SANDWICHES UCAB     *
-    **************************
-    """
-    print(pantalla)
-
-def compraSW():
+def compraSW(ingredientes):
     SWtotales=1
     condi="s"
 
@@ -29,4 +18,6 @@ def compraSW():
 
 
 if __name__=="__main__":
-    compraSW()
+    Ingredientes=archivoAlista()
+    imprimirIngredientes(Ingredientes)
+    
