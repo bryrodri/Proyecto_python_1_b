@@ -24,4 +24,12 @@ def imprimirIngredientes(lista):
         espacio=15-len(i[0])
         print(" "*espacio, end="")
         print("("+i[2]+")")
-    print("Indique ingrediente (enter para terminar): ")
+    #print("Indique ingrediente (enter para terminar): ")
+
+def imprimirCodigos(lista):
+    pantalla="codigos"
+    print(pantalla)
+   
+    for i in lista:
+        print (i)
+   
