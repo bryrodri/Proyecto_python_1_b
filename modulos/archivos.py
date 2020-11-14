@@ -1,8 +1,8 @@
 
 
 
-def archivoAlista():
-    f=open("Datos/precios.txt", "r")
+def archivoAlista(ubicacion):
+    f=open(ubicacion, "r")
     ListaPrecios=[]
     Lista=[]
     ingrediente=[]
@@ -14,7 +14,10 @@ def archivoAlista():
     f.close() 
     return ListaPrecios
 
-
+def ingresarIngredienteArchivo(nombre, precio, comando):
+    f=open("Datos/precios.txt", "a")
+    f.write("\n"+nombre+","+precio+","+comando)
+    f.close
 
 
 

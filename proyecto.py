@@ -19,10 +19,32 @@ def compraSW(ingredientes):
 
         condi=input("¿Desea continuar [s/n]?: ")
 
+def agregarIngrediente():
+    ingre=archivoAlista("Datos/precios.txt")
+    print(ingre)
+    nombre=str(input("ingrese el nombre del ingrediente"))
+    precio=str(input("ingrese el el precio del ingrediente"))
+    comando=str(input("ingrese el comando del ingrediente"))
+    if precio.isdigit()==False:
+        print("* precio incorrecto *")
+        return 0
+    for i in ingre:
+        if nombre.upper()==i[0].upper() or comando.upper()==i[2].upper():
+            print("* producto no creado ya que tiene datos similares a "+i[0]+" "+i[2]+" *")
+            return 0
+    ingresarIngredienteArchivo(nombre, precio, comando)
+    return 1
 
+def login():
+    usuario=str(input("ingresa tu nombre de usuario"))
+    contrasena=str(input("ingresa tu nombre de usuario"))
+    usuarios=archivoAlista("Datos/usuarios.txt")
+    for i in usuarios:
+        if usuario==i[0] and contrasena==i[1]:
+            return 1
+    return 0
 
 if __name__=="__main__":
-    
 
             imprimirLogo()
             imprimirPanes()
@@ -35,7 +57,7 @@ if __name__=="__main__":
                  break 
     
 
-            Ingredientes=archivoAlista()
+            Ingredientes=archivoAlista("Datos/precios.txt")
             imprimirIngredientes(Ingredientes)
             lisCodigosingredientes=codigosIngredientes()
             listaIngredientesIngresados=[]
