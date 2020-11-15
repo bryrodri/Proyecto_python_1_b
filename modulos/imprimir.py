@@ -25,6 +25,7 @@ def imprimirIngredientes(lista):
         print(" "*espacio, end="")
         print("("+i[2]+")")
     #print("Indique ingrediente (enter para terminar): ")
+    print('Todo           (todo)')
 
 def imprimirCodigos(lista):
     pantalla="codigos"
