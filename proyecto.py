@@ -45,28 +45,22 @@ def login():
             return 1
     return 0
 
-if __name__=="__main__":
-
-            imprimirLogo()
-            imprimirPanes()
-            """ En este ciclo es donde se procesa el ingreso del tipo de sandwich """
-            while 1==1:
+def procesar_ingreso_tipo_sandwich():
+  while 1==1:
                tipoSandwich=ingresarTipoSandwich()#varible que guarda el tipo de Sandwich
                validadr=validarDatos(['t','d','i'],tipoSandwich)# Se validad que la opcion elgida sea valida
                if validadr==1:
                   print('Elija una opcion valida')
                else:
                  break 
-      
-    
+  return(tipoSandwich)
 
-            Ingredientes=archivoAlista("Datos/precios.txt")# Se consulta y se guada los ingredientes leido en el archivo txt
-            imprimirIngredientes(Ingredientes)# se imprimen por pantalla los ingredientes almacenado en el archivo txt
+def procesar_ingreso_tipo_ingrediente():
             lisCodigosingredientes=codigosIngredientes()# Se obtiene una lista con los codigos que identifican cada ingrediente
             lisCodigosingredientes.append('todo')# Se agrega el codigo de todo a la lita de codigo de los ingredientes
             listaIngredientesIngresados=[]#list que contendra todos los codigos de los ingredientes ingrsados por el cliente
             conTodo=0# Esta variable se usa para saber si el ciente  quiere todos los ingrdentes en su sandwich
-
+            
             """ En este ciclo es donde se procesa el ingreso del tipo de ingrediente """
             while 1==1:
               
@@ -86,8 +80,9 @@ if __name__=="__main__":
                    break
               elif validadr==1:
                     print('Elija una opcion valida')
+            return listaIngredientesIngresados,conTodo
 
-
+def imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados ):
             """   Los siguientes  bloques de if y else es para idicarle al usuario por pantalla el tipo
                   de sandwich elgido junto con sus ingredientes """
             if tipoSandwich=='t':
@@ -118,6 +113,26 @@ if __name__=="__main__":
                     print("Usted seleccionó un sándwich Individual con los sigueinetes ingredientes :")
                     for i  in listaIngredientesIngresados:
                       devolverIngredienteApartirDeCodigo(i)# Este metodo imprime por pantalla el ingridiente recibiendo  el codigo de dicho ingrediente como parametro
+                      
+
+         
+
+
+
+
+
+if __name__=="__main__":
+
+            imprimirLogo()
+            imprimirPanes()       
+            tipoSandwich=procesar_ingreso_tipo_sandwich()#Se obtiene el tipo de sandwich    
+            Ingredientes=archivoAlista("Datos/precios.txt")# Se consulta y se guarda los ingredientes leido en el archivo txt
+            imprimirIngredientes(Ingredientes)# se imprimen por pantalla los ingredientes almacenado en el archivo txt
+            """Se obtiene la lista de los codigos de los ingredientes seleccionados por el cliente 
+            y si es el caso tambien se obtiene una variable que nos permite saber 
+            si el cliente selecciono todos los ingredientes """
+            listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente()
+            imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
                       
 
          
