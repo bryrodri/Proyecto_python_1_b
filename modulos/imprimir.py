@@ -33,4 +33,7 @@ def imprimirCodigos(lista):
    
     for i in lista:
         print (i)
+
+def imprimirNumeroSandwich(numeroSandwich):
+    print(f'Sandwich número {numeroSandwich}')
    

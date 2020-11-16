@@ -124,7 +124,8 @@ def imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados ):
 if __name__=="__main__":
 
             imprimirLogo()
-            imprimirPanes()       
+            imprimirPanes() 
+            imprimirNumeroSandwich(1)#Se imprime por pantalla el numero del sandwich que esta siendo pedido      
             tipoSandwich=procesar_ingreso_tipo_sandwich()#Se obtiene el tipo de sandwich    
             Ingredientes=archivoAlista("Datos/precios.txt")# Se consulta y se guarda los ingredientes leido en el archivo txt
             imprimirIngredientes(Ingredientes)# se imprimen por pantalla los ingredientes almacenado en el archivo txt
