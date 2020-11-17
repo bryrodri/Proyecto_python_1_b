@@ -1,5 +1,5 @@
 from modulos.archivos import *
-from modulos.imprimir import * 
+from modulos.imprimir import *
 from modulos.pedir_datos import *
 from modulos.validaciones import *
 from modulos.lista_vacias import *
@@ -52,7 +52,7 @@ def procesar_ingreso_tipo_sandwich():
                if validadr==1:
                   print('Elija una opcion valida')
                else:
-                 break 
+                 break
   return(tipoSandwich)
 
 def procesar_ingreso_tipo_ingrediente(Ingredientes):
@@ -60,20 +60,20 @@ def procesar_ingreso_tipo_ingrediente(Ingredientes):
             lisCodigosingredientes.append('todo')# Se agrega el codigo de todo a la lita de codigo de los ingredientes
             listaIngredientesIngresados=[]#list que contendra todos los codigos de los ingredientes ingrsados por el cliente
             conTodo=0# Esta variable se usa para saber si el ciente  quiere todos los ingrdentes en su sandwich
-            
+
             """ En este ciclo es donde se procesa el ingreso del tipo de ingrediente """
             while 1==1:
-              
+
               #istaIngredientesIngresados.append(ingresarIngredientes())
               tipoIngrediente=ingresarIngredientes()# Se almacena el codigo del tipo de ingrediente seleccionado por el usuario en la varible tipoIngrediente
               validadr=validarDatos(lisCodigosingredientes, tipoIngrediente) #Se validan los datos
-           
-              listaIngredientesIngresados.append(tipoIngrediente) # Se agrega el codigo del ingrediente ingresado a una list  
-              """   El siguiente if es para finalizar el ingreso de ingredientes ya sea que el usurio desidiera finalizar 
+
+              listaIngredientesIngresados.append(tipoIngrediente) # Se agrega el codigo del ingrediente ingresado a una list
+              """   El siguiente if es para finalizar el ingreso de ingredientes ya sea que el usurio desidiera finalizar
               el proceso indicando '' o indicando que quiere todos los ingredientes """
               if  listaIngredientesIngresados[len(listaIngredientesIngresados)-1]=='' or listaIngredientesIngresados[len(listaIngredientesIngresados)-1]=='todo':
                    if listaIngredientesIngresados[len(listaIngredientesIngresados)-1]=='todo':
-                     conTodo=1 
+                     conTodo=1
                      listaIngredientesIngresados.append(Ingredientes)
                    listaIngredientesIngresados.pop()
                    listaIngredientesIngresados=eliminarFalsosIngrediente( lisCodigosingredientes,listaIngredientesIngresados)
@@ -121,28 +121,24 @@ def imprimir_sandwich(tipo,todo,listing,ing ):
 
 
 
-if __name__=="__main__":
 
-            imprimirLogo()
-            imprimirPanes() 
-            imprimirNumeroSandwich(1)#Se imprime por pantalla el numero del sandwich que esta siendo pedido      
-            tipoSandwich=procesar_ingreso_tipo_sandwich()#Se obtiene el tipo de sandwich    
+
+if __name__=="__main__":
+    ans='s'
+    cont=1
+    imprimirLogo()
+    while ans.lower()=='s':
+            imprimirNumeroSandwich(cont)#Se imprime por pantalla el numero del sandwich que esta siendo pedido
+            imprimirPanes()
+            tipoSandwich=procesar_ingreso_tipo_sandwich()#Se obtiene el tipo de sandwich
             Ingredientes=archivoAlista("Datos/precios.txt")# Se consulta y se guarda los ingredientes leido en el archivo txt
             imprimirIngredientes(Ingredientes)# se imprimen por pantalla los ingredientes almacenado en el archivo txt
-            """Se obtiene la lista de los codigos de los ingredientes seleccionados por el cliente 
-            y si es el caso tambien se obtiene una variable que nos permite saber 
+            """Se obtiene la lista de los codigos de los ingredientes seleccionados por el cliente
+            y si es el caso tambien se obtiene una variable que nos permite saber
             si el cliente selecciono todos los ingredientes """
             listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente(Ingredientes)
             imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados,Ingredientes )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
-            imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo)
-                      
+            cont+=1
+            ans= input('¿Desea continuar [s/n]?: ')
 
-         
-                 
-
-                    
-                                      
-                       
-
-          
-    
+    imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo,cont)
