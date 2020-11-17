@@ -83,39 +83,38 @@ def procesar_ingreso_tipo_ingrediente(Ingredientes):
                     print('Elija una opcion valida')
             return listaIngredientesIngresados,conTodo
 
-def imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados ):
-            """   Los siguientes  bloques de if y else es para idicarle al usuario por pantalla el tipo
-                  de sandwich elgido junto con sus ingredientes """
-            if tipoSandwich=='t':
-               if conTodo==1:
-                   print("Usted seleccionó un sándwich Triple con todo") 
-               elif is_empty(listaIngredientesIngresados)==True:
-                   print("Usted seleccionó un sándwich Triple solo")
-               else:
-                 print("Usted seleccionó un sándwich Triple con los sigueinetes ingredientes :")
-                 for i  in listaIngredientesIngresados:
-                    devolverIngredienteApartirDeCodigo(i)# Este metodo imprime por pantalla el ingridiente recibiendo  el codigo de dicho ingrediente como parametro
-            elif tipoSandwich=='d':
-               if conTodo==1:
-                   print("Usted seleccionó un sándwich Doble con todo") 
-               elif is_empty(listaIngredientesIngresados)==True:
-                   print("Usted seleccionó un sándwich Doble solo")
-               else:
+def imprimir_sandwich(tipo,todo,listing,ing ):    
+    lista=[]
+    ini,resp,nombre="con","",""
+    k=0
+    if tipo=="t":
+        nombre="Triple"
+    elif tipo=="d":
+        nombre="Doble"
+    elif tipo=="i":
+        nombre="Individual"
+    
+    for i in listing:
+        for j in ing:
+            if i==j[2] or i=="todo":
+                lista.append(j[0])
 
-                print("Usted seleccionó un sándwich Doble con los sigueinetes ingredientes :")
-                for i  in listaIngredientesIngresados:
-                  devolverIngredienteApartirDeCodigo(i)# Este metodo imprime por pantalla el ingridiente recibiendo  el codigo de dicho ingrediente como parametro
-            elif tipoSandwich=='i':
-                  if conTodo==1:
-                    print("Usted seleccionó un sándwich Individual con todo") 
-                  elif is_empty(listaIngredientesIngresados)==True:
-                    print("Usted seleccionó un sándwich individual solo")
-                  else:
-                    print("Usted seleccionó un sándwich Individual con los sigueinetes ingredientes :")
-                    for i  in listaIngredientesIngresados:
-                      devolverIngredienteApartirDeCodigo(i)# Este metodo imprime por pantalla el ingridiente recibiendo  el codigo de dicho ingrediente como parametro
-                      
+    for t in lista:
+        if k==0:
+            resp=ini+" "+t
+        k=k+1
+        if k==1 and k==len(lista):
+            break   
+        elif k>1 and k!= len(lista):
+            resp=resp+", "+t   
+        elif k>1 and k==len(lista):
+             resp=resp+" y "+t
 
+    
+    if todo ==0:
+        print("Usted seleccionó un sándwich",nombre,resp)
+    else:
+        print("Subtotal a pagar por un sándwich",nombre,"con todo")
          
 
 
@@ -134,7 +133,7 @@ if __name__=="__main__":
             y si es el caso tambien se obtiene una variable que nos permite saber 
             si el cliente selecciono todos los ingredientes """
             listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente(Ingredientes)
-            imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
+            imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados,Ingredientes )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
             imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo)
                       
 
