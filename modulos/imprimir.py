@@ -36,4 +36,37 @@ def imprimirCodigos(lista):
 
 def imprimirNumeroSandwich(numeroSandwich):
     print(f'Sandwich número {numeroSandwich}')
+
+
+def imprimir_precio(tipo,ing,listing,todo):
+    lista=[]
+    valor_ing,total_ing,precio=0,0,0
+    if tipo=="t":
+        precio=580
+    elif tipo=="d":
+        precio=430
+    elif tipo=="i":
+        precio=280
+    
+    for i in listing:
+        for j in ing:
+            if i==j[2]:
+                valor_ing=j[1]
+                valor_ing=float(valor_ing)
+                total_ing=total_ing + valor_ing
+                lista.append(j[0])
+    
+    
+    
+    if  tipo=="t":
+        print("Subtotal a pagar por un sándwich Triple:",precio +total_ing)
+    elif  tipo=="d":
+        print("Subtotal a pagar por un sándwich Doble:",precio +total_ing)
+    elif tipo=="i":
+        print("Subtotal a pagar por un sándwich Individual:",precio +total_ing)
+    
+
+        
+
+
    

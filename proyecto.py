@@ -134,6 +134,7 @@ if __name__=="__main__":
             si el cliente selecciono todos los ingredientes """
             listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente()
             imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
+            imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo)
                       
 
          
