@@ -55,7 +55,7 @@ def procesar_ingreso_tipo_sandwich():
                  break 
   return(tipoSandwich)
 
-def procesar_ingreso_tipo_ingrediente():
+def procesar_ingreso_tipo_ingrediente(Ingredientes):
             lisCodigosingredientes=codigosIngredientes()# Se obtiene una lista con los codigos que identifican cada ingrediente
             lisCodigosingredientes.append('todo')# Se agrega el codigo de todo a la lita de codigo de los ingredientes
             listaIngredientesIngresados=[]#list que contendra todos los codigos de los ingredientes ingrsados por el cliente
@@ -74,6 +74,7 @@ def procesar_ingreso_tipo_ingrediente():
               if  listaIngredientesIngresados[len(listaIngredientesIngresados)-1]=='' or listaIngredientesIngresados[len(listaIngredientesIngresados)-1]=='todo':
                    if listaIngredientesIngresados[len(listaIngredientesIngresados)-1]=='todo':
                      conTodo=1 
+                     listaIngredientesIngresados.append(Ingredientes)
                    listaIngredientesIngresados.pop()
                    listaIngredientesIngresados=eliminarFalsosIngrediente( lisCodigosingredientes,listaIngredientesIngresados)
                    print(listaIngredientesIngresados)
@@ -132,7 +133,7 @@ if __name__=="__main__":
             """Se obtiene la lista de los codigos de los ingredientes seleccionados por el cliente 
             y si es el caso tambien se obtiene una variable que nos permite saber 
             si el cliente selecciono todos los ingredientes """
-            listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente()
+            listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente(Ingredientes)
             imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
             imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo)
                       
