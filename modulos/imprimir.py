@@ -40,13 +40,17 @@ def imprimirNumeroSandwich(numeroSandwich):
 
 def imprimir_precio(tipo,ing,listing,todo):
     lista=[]
+    ini,resp,nombre="con","",""
     valor_ing,total_ing,precio,k=0,0,0,0
     if tipo=="t":
         precio=580
+        nombre="Triple"
     elif tipo=="d":
         precio=430
+        nombre="Doble"
     elif tipo=="i":
         precio=280
+        nombre="Individual"
     
     for i in listing:
         for j in ing:
@@ -55,16 +59,22 @@ def imprimir_precio(tipo,ing,listing,todo):
                 valor_ing=float(valor_ing)
                 total_ing=total_ing + valor_ing
                 lista.append(j[0])
-                k=k+1
+
+    for t in lista:
+        if k==0:
+            resp=ini+" "+t
+        k=k+1
+        if k==1 and k==len(lista):
+            break   
+        elif k>1 and k!= len(lista):
+            resp=resp+", "+t   
+        elif k>1 and k==len(lista):
+             resp=resp+"y "+t
 
     
-    if  tipo=="t":
-        print("Subtotal a pagar por un sándwich Triple:",precio +total_ing)
-    elif  tipo=="d":
-        print("Subtotal a pagar por un sándwich Doble:",precio +total_ing)
-    elif tipo=="i":
-        print("Subtotal a pagar por un sándwich Individual:",precio +total_ing)
-    elif  k==len(ing):
+    if todo ==0:
+        print("Subtotal a pagar por un sándwich",nombre,resp,":",precio +total_ing)
+    else:
         print("Subtotal a pagar por un sándwich con todo:",precio +total_ing)
 
         
