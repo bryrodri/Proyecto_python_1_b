@@ -83,7 +83,7 @@ def procesar_ingreso_tipo_ingrediente(Ingredientes):
                     print('Elija una opcion valida')
             return listaIngredientesIngresados,conTodo
 
-def imprimir_sandwich(tipo,todo,listing,ing ):    
+def imprimir_sandwich(tipo,todo,listing,ing ):
     lista=[]
     ini,resp,nombre="con","",""
     k=0
@@ -93,7 +93,7 @@ def imprimir_sandwich(tipo,todo,listing,ing ):
         nombre="Doble"
     elif tipo=="i":
         nombre="Individual"
-    
+
     for i in listing:
         for j in ing:
             if i==j[2] or i=="todo":
@@ -104,18 +104,18 @@ def imprimir_sandwich(tipo,todo,listing,ing ):
             resp=ini+" "+t
         k=k+1
         if k==1 and k==len(lista):
-            break   
+            break
         elif k>1 and k!= len(lista):
-            resp=resp+", "+t   
+            resp=resp+", "+t
         elif k>1 and k==len(lista):
              resp=resp+" y "+t
 
-    
+
     if todo ==0:
         print("Usted seleccionó un sándwich",nombre,resp)
     else:
         print("Subtotal a pagar por un sándwich",nombre,"con todo")
-         
+
 
 
 
@@ -125,9 +125,10 @@ def imprimir_sandwich(tipo,todo,listing,ing ):
 
 if __name__=="__main__":
     ans='s'
-    cont=1
+    cont, precio= 0, 0
     imprimirLogo()
     while ans.lower()=='s':
+            cont+=1
             imprimirNumeroSandwich(cont)#Se imprime por pantalla el numero del sandwich que esta siendo pedido
             imprimirPanes()
             tipoSandwich=procesar_ingreso_tipo_sandwich()#Se obtiene el tipo de sandwich
@@ -138,7 +139,9 @@ if __name__=="__main__":
             si el cliente selecciono todos los ingredientes """
             listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente(Ingredientes)
             imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados,Ingredientes )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
-            cont+=1
+            precio+= imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo)
             ans= input('¿Desea continuar [s/n]?: ')
 
-    imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo,cont)
+    print("El pedido tiene un total de", cont, "sándwich(es) por un monto de:",precio)
+    print("Gracias por su compra, regrese pronto")
+    # imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo,cont)
