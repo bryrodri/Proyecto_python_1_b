@@ -30,7 +30,7 @@ def imprimirIngredientes(lista):
 def imprimirCodigos(lista):
     pantalla="codigos"
     print(pantalla)
-   
+
     for i in lista:
         print (i)
 
@@ -50,20 +50,14 @@ def imprimir_precio(tipo,ing,listing,todo):
     elif tipo=="i":
         precio=280
         nombre="Individual"
-    
+
     for i in listing:
         for j in ing:
             if i==j[2] or i=="todo":
                 valor_ing=j[1]
                 valor_ing=float(valor_ing)
                 total_ing=total_ing + valor_ing
-                   
-    
-    print("Subtotal a pagar por un sándwich",nombre,":",precio)
-    print("El pedido tiene un total de 1 sándwich(es) por un monto de:",precio+total_ing)
-    print("Gracias por su compra, regrese pronto")
-
-        
 
 
-   
+    print("Subtotal a pagar por un sándwich",nombre,":",precio+total_ing)
+    return precio+total_ing
