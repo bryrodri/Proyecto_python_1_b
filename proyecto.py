@@ -139,9 +139,11 @@ if __name__=="__main__":
             si el cliente selecciono todos los ingredientes """
             listaIngredientesIngresados,conTodo=procesar_ingreso_tipo_ingrediente(Ingredientes)
             imprimir_sandwich(tipoSandwich,conTodo,listaIngredientesIngresados,Ingredientes )# Se imprime en pantalla el Sandwich creado junto con sus ingredientes si los tiene
-            precio+= imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo)
+            subtotal= imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo)
+            precio+= subtotal
+            guardarCompra(tipoSandwich,subtotal,listaIngredientesIngresados)
             ans= input('¿Desea continuar [s/n]?: ')
 
     print("El pedido tiene un total de", cont, "sándwich(es) por un monto de:",precio)
+    guardarTotal(precio)
     print("Gracias por su compra, regrese pronto")
-    # imprimir_precio(tipoSandwich,Ingredientes,listaIngredientesIngresados,conTodo,cont)

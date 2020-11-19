@@ -11,7 +11,7 @@ def archivoAlista(ubicacion):
         ingrediente=Lista[0].split(",")
         ListaPrecios.append(ingrediente)
 
-    f.close() 
+    f.close()
     return ListaPrecios
 
 def ingresarIngredienteArchivo(nombre, precio, comando):
@@ -34,7 +34,7 @@ def codigosIngredientes():
         ingrediente=Lista[0].split(",")
         ListaCodigos.append(ingrediente[2])
 
-    f.close() 
+    f.close()
     return ListaCodigos
 
 
@@ -50,5 +50,16 @@ def devolverIngredienteApartirDeCodigo(codigo):
               print( ingrediente[0])
               break
 
-    f.close() 
+    f.close()
     return ListaPrecios
+
+
+def guardarCompra(tipo, precio, ingredientes):
+    f=open("Datos/historial.txt", "a")
+    f.write("\n"+tipo+","+str(ingredientes)+","+str(precio))
+    f.close()
+
+def guardarTotal(total):
+    f=open("Datos/historial.txt", "a")
+    f.write("\n"+str(total)+"\n")
+    f.close()
