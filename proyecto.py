@@ -4,6 +4,7 @@ from modulos.pedir_datos import *
 from modulos.validaciones import *
 from modulos.lista_vacias import *
 from modulos.eliminaciones import *
+from modulos.ListaTopIngredienteMasPedido import *
 
 
 
@@ -138,7 +139,28 @@ def menuAdministrador():
     
 
 
+def procesar_ingreso_opcion_top():
+  while 1==1:
+               respuesta=str(input('Ingrese opcion: '))
+               validadr=validarDatos(['s','n'],respuesta)# Se validad que la opcion elgida sea valida
+               if validadr==1:
+                  print('Elija una opcion valida')
+               else:
+                 break
+  return(respuesta)
 
+
+
+def procesar_salir_opcion_top():
+
+  while 1==1:
+               respuesta=str(input('Presione enter para salir: '))
+               validadr=validarDatos([''],respuesta)# Se validad que la opcion elgida sea valida
+               if validadr==1:
+                  print('Error presione enter para salir')
+               else:
+                 break
+  return(respuesta)
 
 if __name__=="__main__":
 
@@ -158,6 +180,11 @@ if __name__=="__main__":
 
 
 
+    imprimirOpcionTop()
+    respuesta=procesar_ingreso_opcion_top()
+    if respuesta=='s':
+        inicicarTopIngredienteMasPedido(codigosIngredientes())
+        procesar_salir_opcion_top()
 
     ans='s'
     cont, precio= 0, 0
