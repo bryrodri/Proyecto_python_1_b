@@ -1,6 +1,8 @@
 
 
-
+# Funcion para convertir un archivo a lista
+# recibe una ubicacion de archivo 
+# retorna una lista con formato [[valor,valor,valor,valor],[valor,valor,valor,valor]]
 def archivoAlista(ubicacion):
     f=open(ubicacion, "r")
     ListaPrecios=[]
@@ -14,6 +16,8 @@ def archivoAlista(ubicacion):
     f.close()
     return ListaPrecios
 
+# Funcion para agregar un ingrediente al archivo precios.txt
+# recibe 3 strings
 def ingresarIngredienteArchivo(nombre, precio, comando):
     f=open("Datos/precios.txt", "a")
     f.write("\n"+nombre+","+precio+","+comando)

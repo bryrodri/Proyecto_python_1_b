@@ -7,38 +7,37 @@ from modulos.eliminaciones import *
 
 
 
-
-def compraSW(ingredientes):
-    SWtotales=1
-    condi="s"
-
-    while condi=="s" :
-        imprimirLogo()
-        print("Sandwich número "+  str(SWtotales))
-        imprimirPanes()
-
-
-        condi=input("¿Desea continuar [s/n]?: ")
-
+# funcion para agregar un ingrediente a el archivo de precios
+# retorna 1 si lo creo y 0 si no 
 def agregarIngrediente():
     ingre=archivoAlista("Datos/precios.txt")
-    print(ingre)
-    nombre=str(input("ingrese el nombre del ingrediente"))
-    precio=str(input("ingrese el el precio del ingrediente"))
-    comando=str(input("ingrese el comando del ingrediente"))
+    imprimirIngredientesCompletos(ingre)
+    nombre=str(input("ingrese el nombre del ingrediente  "))
+    precio=str(input("ingrese el el precio del ingrediente  "))
+    comando=str(input("ingrese el comando del ingrediente  "))
+    print("\n"*3)
     if precio.isdigit()==False:
-        print("* precio incorrecto *")
+        print("* precio incorrecto ingrediente no agregado *")
+        return 0
+    if nombre.isalpha()== False:
+        print("* Nombre incorrecto ingrediente no agregado *")
+        return 0
+    if comando.isalpha()== False:
+        print("* Comando incorrecto ingrediente no agregado *")
         return 0
     for i in ingre:
         if nombre.upper()==i[0].upper() or comando.upper()==i[2].upper():
             print("* producto no creado ya que tiene datos similares a "+i[0]+" "+i[2]+" *")
             return 0
     ingresarIngredienteArchivo(nombre, precio, comando)
+    print("***   Creado Exitosamente   ***")
     return 1
 
+# Funcion para login, retorna 1 si el login fue exitoso y 0 si no
 def login():
-    usuario=str(input("ingresa tu nombre de usuario"))
-    contrasena=str(input("ingresa tu nombre de usuario"))
+    print("**    Login    **")
+    usuario=str(input("ingresa tu nombre de usuario  "))
+    contrasena=str(input("ingresa tu contraseña  "))
     usuarios=archivoAlista("Datos/usuarios.txt")
     for i in usuarios:
         if usuario==i[0] and contrasena==i[1]:
@@ -117,13 +116,49 @@ def imprimir_sandwich(tipo,todo,listing,ing ):
         print("Subtotal a pagar por un sándwich",nombre,"con todo")
 
 
+# Funcion para el menu administrativo de agregar ingrediente
+def menuAdministrador():
+    print("\n"*3)
+    veces=0
+    acceso=0
+    while veces<3:
+        
+        acceso=login()
 
-
+        if acceso==1:
+            print("\n"*3)
+            agregarIngrediente()
+            break
+        else:
+            print("\n"*3)
+            veces= veces+1
+            if veces < 3:
+                print("Datos incorrectos, tienes  "+ str(3- veces)+" intentos")
+            
+    
 
 
 
 
 if __name__=="__main__":
+
+    while(1==1):
+        imprimirMenuAdministrador()
+        respuesta=str(input("indique la opcion que prefiera  "))
+
+        if respuesta=="1":
+            menuAdministrador()
+        elif respuesta=="2":
+            break
+        else:
+            print("\n"*3)
+            print("** Marque una opcion correcta **")
+    
+
+
+
+
+
     ans='s'
     cont, precio= 0, 0
     imprimirLogo()

@@ -1,12 +1,12 @@
 
-
+# Funcion para imprimir Panes
 def imprimirPanes():
     pantalla="""
     Opciones:
     Tamaños: Triple ( t ) Doble ( d ) Individual ( i ): """
     print(pantalla)
 
-
+# Funcion para imprimir Logo
 def imprimirLogo():
     pantalla="""
     **************************
@@ -61,3 +61,25 @@ def imprimir_precio(tipo,ing,listing,todo):
 
     print("Subtotal a pagar por un sándwich",nombre,":",precio+total_ing)
     return precio+total_ing
+
+
+# Funcion para imprimir el menu inicial
+def imprimirMenuAdministrador():
+    mensaje="""
+                    Menu
+    1.Agregar Ingrediente
+    2.Pedir Sandwiche 
+        
+    """
+    print(mensaje)
+
+
+
+# Funcion para imprimir nombre de ingrediente, precio y comando
+# recibe una lista de formato [[nombre,precio,comando],[nombre,precio,comando]]
+def imprimirIngredientesCompletos(lista):
+    print("**   ingredientes Disponibles actualmente    **")
+    contador=1
+    for i in lista:
+        print(str(contador)+ ". "+ i[0]+" "+i[1]+" "+ i[2])
+        contador=contador+1
