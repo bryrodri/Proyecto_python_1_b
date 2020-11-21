@@ -170,6 +170,7 @@ def inicicarTopIngredienteMasPedido(listaCodigos):
      if os.stat("Datos/historial.txt").st_size != 0:
          
          listaIngredientesDudosa= leerYGuadarHistorialDeVentas()
+        #  print(f' lista de ingredientes dudosa {listaIngredientesDudosa}')
          listaIngredientesDefinitiva=limpiar(listaIngredientesDudosa,listaCodigos)
         #  print(f' lista de ingredientes leida {listaIngredientesDefinitiva}')
          if  is_empty(listaIngredientesDefinitiva)==False:
@@ -181,11 +182,11 @@ def inicicarTopIngredienteMasPedido(listaCodigos):
                      listaOrdenada=generarListaOrdenada(listaIngredientesSumada)
                     #  print(f'Esta es la lista ordenada del top :{listaOrdenada}')
                      imprimirTopIngredientes(listaOrdenada)
-             else:
+             else:                            
                     print('Hasta ahora solo se registrados sanwiches con todos los ingredientes por lo que no hay un top')
         
          else:
-             print('Hasta ahora solo se han regitrados sandwiches si ingredientes adicionales')
+             print('Hasta ahora solo se han regitrados sandwiches sin ingredientes adicionales \no se han registrados sandwiches con todos los ingredientes por lo que no tenemos top aun')
      else:
          print('No hay sandwich Registrados')
 
