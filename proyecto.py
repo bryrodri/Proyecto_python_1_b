@@ -77,7 +77,6 @@ def procesar_ingreso_tipo_ingrediente(Ingredientes):
                      listaIngredientesIngresados.append(Ingredientes)
                    listaIngredientesIngresados.pop()
                    listaIngredientesIngresados=eliminarFalsosIngrediente( lisCodigosingredientes,listaIngredientesIngresados)
-                   print(listaIngredientesIngresados)
                    break
               elif validadr==1:
                     print('Elija una opcion valida')
@@ -114,7 +113,7 @@ def imprimir_sandwich(tipo,todo,listing,ing ):
     if todo ==0:
         print("Usted seleccionó un sándwich",nombre,resp)
     else:
-        print("Subtotal a pagar por un sándwich",nombre,"con todo")
+        print("Usted seleccionó un sándwich",nombre,"con todo")
 
 
 # Funcion para el menu administrativo de agregar ingrediente

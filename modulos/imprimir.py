@@ -66,7 +66,7 @@ def imprimir_precio(tipo,ing,listing,todo):
 # Funcion para imprimir el menu inicial
 def imprimirMenuAdministrador():
     mensaje="""
-                    Menu
+         Menu
     1.Agregar Ingrediente
     2.Pedir Sandwiche 
         
