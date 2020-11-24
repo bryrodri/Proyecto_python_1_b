@@ -177,16 +177,16 @@ def inicicarTopIngredienteMasPedido(listaCodigos):
 
              listaIngredientesSumada=sumarIngredientes(listaIngredientesDefinitiva,listaCodigos)
             #  print(f'Lista de ingredientes sumado {listaIngredientesSumada}')
-             if  verificarSiSoloHaySanwichConTodo(listaIngredientesSumada)==0:                   
+            #  if  verificarSiSoloHaySanwichConTodo(listaIngredientesSumada)==0:                   
 
-                     listaOrdenada=generarListaOrdenada(listaIngredientesSumada)
+             listaOrdenada=generarListaOrdenada(listaIngredientesSumada)
                     #  print(f'Esta es la lista ordenada del top :{listaOrdenada}')
-                     imprimirTopIngredientes(listaOrdenada)
-             else:                            
-                    print('Hasta ahora solo se registrados sanwiches con todos los ingredientes por lo que no hay un top')
+             imprimirTopIngredientes(listaOrdenada)
+            #  else:                            
+            #         print('Hasta ahora solo se registrados sanwiches con todos los ingredientes por lo que no hay un top')
         
          else:
-             print('Hasta ahora solo se han regitrados sandwiches sin ingredientes adicionales \no se han registrados sandwiches con todos los ingredientes por lo que no tenemos top aun')
+             print('Hasta ahora solo se han regitrados sandwiches sin ingredientes adicionales \no solo se han registrados sandwiches con todos los ingredientes por lo que no tenemos top aun')
      else:
          print('No hay sandwich Registrados')
 
