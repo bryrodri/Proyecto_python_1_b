@@ -50,7 +50,7 @@ def procesar_ingreso_tipo_sandwich():
                tipoSandwich=ingresarTipoSandwich()#varible que guarda el tipo de Sandwich
                validadr=validarDatos(['t','d','i'],tipoSandwich)# Se validad que la opcion elgida sea valida
                if validadr==1:
-                  print('Elija una opcion valida')
+                  print('=> Debe seleccionar el tamaño correcto!!')
                else:
                  break
   return(tipoSandwich)

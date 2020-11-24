@@ -1,7 +1,7 @@
 def ingresarTipoSandwich():
-    tipoSandwich = str(input('Ingrese tamaño: '))
+    tipoSandwich = str(input('Tamaños: Triple ( t ) Doble ( d ) Individual ( i ): '))
     return tipoSandwich
 
 def ingresarIngredientes():
-    tipoIngrediente = str(input('Ingrese ingrediente: '))
+    tipoIngrediente = str(input('Ingrese ingrediente (enter para terminar): '))
     return tipoIngrediente

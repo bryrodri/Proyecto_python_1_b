@@ -2,8 +2,7 @@
 # Funcion para imprimir Panes
 def imprimirPanes():
     pantalla="""
-    Opciones:
-    Tamaños: Triple ( t ) Doble ( d ) Individual ( i ): """
+Opciones:"""
     print(pantalla)
 
 # Funcion para imprimir Logo
@@ -16,7 +15,7 @@ def imprimirLogo():
     print(pantalla)
 
 def imprimirIngredientes(lista):
-    pantalla="ingredientes"
+    pantalla="Ingredientes:"
     print(pantalla)
     espacio=0
     for i in lista:
