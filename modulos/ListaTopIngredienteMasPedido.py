@@ -11,15 +11,15 @@ def is_empty(data_structure):
 def limpiar(ListaDudosa,codigosIngredientes):
     listaIngredientesDefinitiva=[]
     for i in ListaDudosa:
-    
+
         miniLista = i.split(',')
         for j in  miniLista:
-        
+
             for k in codigosIngredientes:
                 if k==j:
                     listaIngredientesDefinitiva.append(j)
 
-  
+
     return(listaIngredientesDefinitiva)
 
 def sumarIngredientes(listaIngredientesDefinitiva,listaCodigos):
@@ -32,8 +32,8 @@ def sumarIngredientes(listaIngredientesDefinitiva,listaCodigos):
         listaSuma.append(i+'*'+str(suma))
         suma=0
 
- 
-   
+
+
     return(listaSuma)
 
 def obtenerIngredienteMasPedido(sumaOrdenada,codigos):
@@ -42,7 +42,7 @@ def obtenerIngredienteMasPedido(sumaOrdenada,codigos):
     i=0
     vacia=0
     valorAEliminar=""
-   
+
     ingredienteMayor =""
     if is_empty(sumaOrdenada)== True:
         vacia=1
@@ -51,27 +51,27 @@ def obtenerIngredienteMasPedido(sumaOrdenada,codigos):
          miniSuma = sumaOrdenada[i].split('*')
          a=miniSuma[1]
          a=int(a)
-    
+
          if a>=mayor:
               mayor= a
-              if a!=0:                  
-              
+              if a!=0:
+
                  ingredienteMayor =miniSuma[0]
                  valorAEliminar=sumaOrdenada[i]
 
-              
+
 
          i=i+1
-  
+
 
     return(valorAEliminar,vacia)
-          
-    
-    
-         
-   
+
+
+
+
+
 def eliminarIngredienteMasPedido(Ingrediente,listaSumada):
-  
+
        listaSumada.remove(Ingrediente)
 
        return(listaSumada)
@@ -101,22 +101,22 @@ def generarListaOrdenada(suma):
     return(listaordenada)
 
 def DevolverNombreIngrediente(codigo):
-    f = open ('Datos/Precios.txt','r')
+    f = open ('Datos/precios.txt','r')
     lineas = f.readlines()
-   
+
     i = 0
-    while i < len(lineas):       
+    while i < len(lineas):
         a=lineas[i]
-   
+
         linea = a.split(',')
         if codigo==linea[2].rstrip('\n'):
-              
+
              return(linea[0])
         i += 1
 
 def imprimirTopIngredientes(listaOrdenada):
     contador=1
-    print('Acontinuaciòn se muestra una lista desde Ingrediente mas pedido al menos pedido :')
+    print('A continuación se muestra una lista desde el Ingrediente mas pedido al menos pedido :')
     for i in listaOrdenada:
         listaResumida=i.split('*')
         ingredieteAImprimir=DevolverNombreIngrediente(listaResumida[0])
@@ -130,11 +130,11 @@ def verificarSiSoloHaySanwichConTodo(listaSumada):
    for i in listaSumada:
        a=i.split('*')
        if a[0]!='todo' and int(a[1])>0:
-           
+
            break
    else:
         todo=1
-   return todo # se rotorna 0 si hay algun ingrediente adicional en la lista 
+   return todo # se rotorna 0 si hay algun ingrediente adicional en la lista
                 #y se retorna 1 si en la lista solo hay sanwich que tienen todos sus ingredintes
 
 
@@ -154,21 +154,21 @@ def leerYGuadarHistorialDeVentas():
         a=a.replace("'","")
         a=a.replace(" ","")
         a=a.strip()
-    
+
 
         listaIngredientes.append(a)
 
         i += 1
     f.close()
     return(listaIngredientes)
-       
 
 
-    
+
+
 
 def inicicarTopIngredienteMasPedido(listaCodigos):
      if os.stat("Datos/historial.txt").st_size != 0:
-         
+
          listaIngredientesDudosa= leerYGuadarHistorialDeVentas()
         #  print(f' lista de ingredientes dudosa {listaIngredientesDudosa}')
          listaIngredientesDefinitiva=limpiar(listaIngredientesDudosa,listaCodigos)
@@ -177,14 +177,14 @@ def inicicarTopIngredienteMasPedido(listaCodigos):
 
              listaIngredientesSumada=sumarIngredientes(listaIngredientesDefinitiva,listaCodigos)
             #  print(f'Lista de ingredientes sumado {listaIngredientesSumada}')
-            #  if  verificarSiSoloHaySanwichConTodo(listaIngredientesSumada)==0:                   
+            #  if  verificarSiSoloHaySanwichConTodo(listaIngredientesSumada)==0:
 
              listaOrdenada=generarListaOrdenada(listaIngredientesSumada)
                     #  print(f'Esta es la lista ordenada del top :{listaOrdenada}')
              imprimirTopIngredientes(listaOrdenada)
-            #  else:                            
+            #  else:
             #         print('Hasta ahora solo se registrados sanwiches con todos los ingredientes por lo que no hay un top')
-        
+
          else:
              print('Hasta ahora solo se han regitrados sandwiches sin ingredientes adicionales \no solo se han registrados sandwiches con todos los ingredientes por lo que no tenemos top aun')
      else:
@@ -195,20 +195,3 @@ def imprimirOpcionTop():
     Desea ver nuestro Top de Ingredientes:
     Si ( s ) No ( n ) : """
     print(pantalla)
-
-
-
-
-
-        
-      
-   
-
-
-
-
-
-
-
-
-

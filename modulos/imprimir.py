@@ -67,8 +67,8 @@ def imprimirMenuAdministrador():
     mensaje="""
          Menu
     1.Agregar Ingrediente
-    2.Pedir Sandwiche 
-        
+    2.Pedir Sandwiches
+
     """
     print(mensaje)
 
@@ -77,7 +77,7 @@ def imprimirMenuAdministrador():
 # Funcion para imprimir nombre de ingrediente, precio y comando
 # recibe una lista de formato [[nombre,precio,comando],[nombre,precio,comando]]
 def imprimirIngredientesCompletos(lista):
-    print("**   ingredientes Disponibles actualmente    **")
+    print("**   Ingredientes Disponibles Actualmente    **")
     contador=1
     for i in lista:
         print(str(contador)+ ". "+ i[0]+" "+i[1]+" "+ i[2])

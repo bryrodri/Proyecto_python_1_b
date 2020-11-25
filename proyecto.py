@@ -9,7 +9,7 @@ from modulos.ListaTopIngredienteMasPedido import *
 
 
 # funcion para agregar un ingrediente a el archivo de precios
-# retorna 1 si lo creo y 0 si no 
+# retorna 1 si lo creo y 0 si no
 def agregarIngrediente():
     ingre=archivoAlista("Datos/precios.txt")
     imprimirIngredientesCompletos(ingre)
@@ -122,7 +122,7 @@ def menuAdministrador():
     veces=0
     acceso=0
     while veces<3:
-        
+
         acceso=login()
 
         if acceso==1:
@@ -134,8 +134,8 @@ def menuAdministrador():
             veces= veces+1
             if veces < 3:
                 print("Datos incorrectos, tienes  "+ str(3- veces)+" intentos")
-            
-    
+
+
 
 
 def procesar_ingreso_opcion_top():
@@ -174,7 +174,7 @@ if __name__=="__main__":
         else:
             print("\n"*3)
             print("** Marque una opcion correcta **")
-    
+
 
 
 
@@ -204,6 +204,9 @@ if __name__=="__main__":
             precio+= subtotal
             guardarCompra(tipoSandwich,subtotal,listaIngredientesIngresados)
             ans= input('¿Desea continuar [s/n]?: ')
+            while ans!= 's' and ans!='n':
+                print('Elija una opcion valida')
+                ans= input('¿Desea continuar [s/n]?: ')
 
     print("El pedido tiene un total de", cont, "sándwich(es) por un monto de:",precio)
     guardarTotal(precio)
